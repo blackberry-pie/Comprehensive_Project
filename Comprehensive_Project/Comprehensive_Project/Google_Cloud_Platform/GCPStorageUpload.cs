@@ -8,7 +8,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
-namespace preprocessor.Google_Cloud_Platform
+namespace Comprehensive_Project.Google_Cloud_Platform
 {
     //bucketname : speech_limit;
 

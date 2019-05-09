@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Moda.Korean.TwitterKoreanProcessorCS;
-namespace preprocessor
+namespace Comprehensive_Project
 {
     class Parser
     {
-        //extractPhraseResult;
+
         private String result;
 
         public Parser(String input)

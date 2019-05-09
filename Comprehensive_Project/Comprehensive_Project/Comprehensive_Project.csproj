@@ -177,8 +177,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Google Cloud Platform\GCPStorageUpload.cs" />
-    <Compile Include="Google Cloud Platform\SpeechToText.cs" />
+    <Compile Include="Google_Cloud_Platform\GCPStorageUpload.cs" />
+    <Compile Include="Google_Cloud_Platform\SpeechToText.cs" />
     <Compile Include="Parser\Parser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

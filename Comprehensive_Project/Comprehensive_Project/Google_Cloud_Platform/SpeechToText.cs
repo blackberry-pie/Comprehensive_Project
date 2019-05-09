@@ -7,7 +7,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Text;
-namespace preprocessor.Google_Cloud_Platform
+namespace Comprehensive_Project.Google_Cloud_Platform
 {
     class SpeechToText
     {

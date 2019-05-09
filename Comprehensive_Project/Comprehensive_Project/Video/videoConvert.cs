@@ -9,5 +9,9 @@ namespace Comprehensive_Project.Video
 {
     class videoConvert
     {
+        public videoConvert()
+        {
+
+        }
     }
 }

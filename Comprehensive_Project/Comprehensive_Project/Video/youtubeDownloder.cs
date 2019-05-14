@@ -39,6 +39,8 @@ namespace Comprehensive_Project.Video
 
             resultValue = result;
 
+            Console.WriteLine("(다운로더 클래스)인식결과 출력 : " + result);
+
         }
         public String getResult()
         {

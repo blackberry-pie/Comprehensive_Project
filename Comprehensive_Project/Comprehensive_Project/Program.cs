@@ -18,7 +18,7 @@ namespace Comprehensive_Project
         {
 
             //youtube 다운로더 모듈 시작
-            YoutubeDownloder yd = new YoutubeDownloder(args[0]);
+            YoutubeDownloder yd = new YoutubeDownloder("https://www.youtube.com/watch?v=SAqJYQgMV5Y"); //args[0]로는 안됨. 직접 값을 넣을 경우 작동함
             var fileName =  yd.getResult();
             Console.WriteLine("파일 이름 : " + fileName);
             //youtube 다운로더 모듈 종료

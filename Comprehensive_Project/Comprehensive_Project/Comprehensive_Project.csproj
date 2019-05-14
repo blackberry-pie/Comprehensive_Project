@@ -226,12 +226,14 @@
     <Compile Include="Parser\TwitterKoreanProcessorCS.cs" />
     <Compile Include="Video\videoConvert.cs" />
     <Compile Include="Video\YoutubeDownloder.cs" />
+    <Compile Include="Video\YoutubeDownloderAsync.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Video\ffmpeg.exe" />
     <Content Include="Video\youtubedownloader.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

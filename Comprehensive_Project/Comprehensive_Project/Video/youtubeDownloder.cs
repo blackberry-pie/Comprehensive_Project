@@ -29,21 +29,19 @@ namespace Comprehensive_Project.Video
             proc.EnableRaisingEvents = false;
             proc.StartInfo = psi;
             proc.Start();    //프로세스 시작
-            proc.StandardInput.Write(youtubeLink + Environment.NewLine);     //명령어를 입력+엔터키
+            proc.StandardInput.Write(youtubeLink + Environment.NewLine);     //예를 들어 dir명령어를 입력
             proc.StandardInput.Close();
             String error = proc.StandardError.ReadToEnd();//오류내용 읽기
 
  
             String resultFileName = proc.StandardOutput.ReadToEnd();
 
-            resultFileName = resultFileName.Replace("", "");//개행문자 제거 파이썬에서 system('cls') 사용 시 ''가 추가로 나옴. 해당 문자열 제거용
-            //Console.WriteLine("파일이름(다운로드 클래스 ReadToEnd직후) : " + resultFileName);
+            Console.WriteLine("파일이름(다운로드 클래스 ReadToEnd직후) : " + resultFileName);
 
-            if (error != null)
+            if(error != null)
             {
                 Console.WriteLine("error : " + error);
             }
-
             resultValue = resultFileName;
 
             proc.WaitForExit();
@@ -58,6 +56,8 @@ namespace Comprehensive_Project.Video
         }
 
     }
+
+
 
 }
 

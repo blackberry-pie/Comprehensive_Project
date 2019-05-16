@@ -224,7 +224,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Parser\TwitterKoreanProcessorCS.cs" />
-    <Compile Include="Video\videoConvert.cs" />
     <Compile Include="Video\YoutubeDownloder.cs" />
   </ItemGroup>
   <ItemGroup>

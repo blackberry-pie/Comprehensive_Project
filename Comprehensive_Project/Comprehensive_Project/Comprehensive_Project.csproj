@@ -218,6 +218,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataBase\DataBaseAccess.cs" />
     <Compile Include="Google_Cloud_Platform\GCPStorageUpload.cs" />
     <Compile Include="Google_Cloud_Platform\SpeechToText.cs" />
     <Compile Include="Parser\Parser.cs" />

@@ -56,11 +56,30 @@ namespace Comprehensive_Project
             //Parser 모듈 종료
 
             Console.WriteLine("메인 본문 파서 결과 : " + parserResult + "\n\n\n\n\n\n\n");
-            
+
+            var splitresult = Program.StringSplit(parserResult);
+
+            /*
+            for(int i = 0;i < splitresult.Length;i++)
+            {
+                Console.WriteLine(splitresult[i]);
+            }
+            */
+
             Console.ReadKey();
             return 0;
 
 
         }
+
+        public static String[] StringSplit(String input)
+        {
+            String[] splitResult = input.Split(new char[]{' '});
+
+            return  splitResult;
+        }
+
+
+
     }
 }

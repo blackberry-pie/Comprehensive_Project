@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Comprehensive_Project.Video;
+using Comprehensive_Project.DataBase;
+
 namespace Comprehensive_Project
 {
     class Program
@@ -65,7 +67,7 @@ namespace Comprehensive_Project
                 Console.WriteLine(splitresult[i]);
             }
             */
-
+            DataBaseAccess dbas = new DataBaseAccess(splitresult);
             Console.ReadKey();
             return 0;
 

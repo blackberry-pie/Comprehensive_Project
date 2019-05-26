@@ -38,8 +38,10 @@ namespace Comprehensive_Project.Video
 
             //Console.WriteLine("파일이름(다운로드 클래스 ReadToEnd직후) : " + resultFileName);
 
-            resultFileName = resultFileName.Replace("", "");// system('cls')로 화면 지울 시 '' 문자가 추가됨 해당 문자 제거
-            
+            this.InvalidPathCharsRemove(ref resultFileName);
+
+
+
             if (error != null)
             {
                 Console.WriteLine("error : " + error);
@@ -55,6 +57,15 @@ namespace Comprehensive_Project.Video
         public String getResult()
         {
             return resultValue;
+        }
+
+        public void InvalidPathCharsRemove(ref String checkFileName)
+        {
+            checkFileName = checkFileName.Replace("", "");// system('cls')로 화면 지울 시 '' 문자가 추가됨 해당 문자 제거
+            checkFileName = checkFileName.Replace("\r", "");// https://stackoverflow.com/questions/21389137/why-illegal-characters-in-path
+            checkFileName = checkFileName.Replace("\n", "");
+            checkFileName = checkFileName.Replace("\t", "");
+
         }
 
     }

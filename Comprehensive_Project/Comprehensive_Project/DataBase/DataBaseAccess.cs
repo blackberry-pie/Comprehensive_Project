@@ -10,8 +10,12 @@ namespace Comprehensive_Project.DataBase
     class DataBaseAccess
     {
         private String insetSql = "INSERT INTO dbo.contents (number,word) VALUES (@number, @word)";
+        private String deleteSql = "DELETE FROM dbo.contents";
+        private String connectionString = "server = hyunsam.asuscomm.com; Database = dictionary; User id = tester; Password = tester";
+
         public DataBaseAccess(String[] input)
         {
+            this.DeleteContentsTable();
             this.InsertData(input);
         }
 
@@ -19,7 +23,7 @@ namespace Comprehensive_Project.DataBase
         public void InsertData(String[] data)
         {
 
-            String connectionString = "server = hyunsam.asuscomm.com; Database = dictionary; User id = tester; Password = tester";
+
 
 
             using (SqlConnection connect = new SqlConnection(connectionString))
@@ -35,15 +39,15 @@ namespace Comprehensive_Project.DataBase
                         command.Parameters.Clear();
                         //매개변수 객체 생성(C#에서의) -> SQL @변수와 대응됨
                         command.Parameters.Add(new SqlParameter("@number", SqlDbType.Int));
-                        command.Parameters.Add(new SqlParameter("@word", SqlDbType.VarChar,40));
+                        command.Parameters.Add(new SqlParameter("@word", SqlDbType.VarChar, 40));
 
                         //C#에서 만든 매개변에 실제 값을 대입
-                        command.Parameters["@number"].Value = i+1;
+                        command.Parameters["@number"].Value = i + 1;
                         command.Parameters["@word"].Value = data[i];
                         command.ExecuteNonQuery();
                     }
 
-                    
+
 
                 }
 
@@ -51,13 +55,28 @@ namespace Comprehensive_Project.DataBase
                 connect.Close();
                 Console.WriteLine("sql insert finish");
             }
-            
+
 
         }
 
         public void DeleteContentsTable()
         {
             //delete table
+            using (SqlConnection connect = new SqlConnection(connectionString))
+            {
+                connect.Open();
+
+                using (SqlCommand command = new SqlCommand(deleteSql, connect))
+                {
+                    command.Parameters.Clear();
+                    command.CommandType = CommandType.Text;
+
+
+                    command.ExecuteNonQuery();
+
+                }
+            }
         }
+
     }
 }

@@ -59,7 +59,7 @@ namespace Comprehensive_Project.DataBase
 
         }
 
-        public void DeleteContentsTable()
+        public void DeleteContentsTable()//컨텐츠 테이블 초기화
         {
             //delete table
             using (SqlConnection connect = new SqlConnection(connectionString))
@@ -75,6 +75,7 @@ namespace Comprehensive_Project.DataBase
                     command.ExecuteNonQuery();
 
                 }
+                connect.Close();
             }
         }
 

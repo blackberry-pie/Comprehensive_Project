@@ -49,6 +49,7 @@ namespace Comprehensive_Project.Video
             resultValue = resultFileName;
 
             proc.WaitForExit();
+
             proc.Close();
 
         }
@@ -65,12 +66,9 @@ namespace Comprehensive_Project.Video
             checkFileName = checkFileName.Replace("\r", "");// https://stackoverflow.com/questions/21389137/why-illegal-characters-in-path
             checkFileName = checkFileName.Replace("\n", "");
             checkFileName = checkFileName.Replace("\t", "");
-
         }
 
     }
-
-
 
 }
 

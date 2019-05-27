@@ -24,7 +24,7 @@ namespace Comprehensive_Project.Google_Cloud_Platform
         private void UploadFile(string bucketName, string localPath, string objectName = null)
         {
             var storage = StorageClient.Create();
-            using (var f = File.OpenRead(localPath)) // 처리되지 않은 예외: System.ArgumentException: 경로에 잘못된 문자가 있습니다. 오류발생
+            using (var f = File.OpenRead(localPath)) 
             {
                 objectName = objectName ?? Path.GetFileName(localPath);
                 storage.UploadObject(bucketName, objectName, null, f);

@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 
 namespace basic_Algo
 {
+   
     class Program
     {
         static void Main(string[] args)
@@ -31,22 +32,14 @@ namespace basic_Algo
             contentsDB.Append("SELECT * FROM dbo.contents");
             dicDB_len.Append("SELECT COUNT(단어) FROM dbo.word");
             conDB_len.Append("SELECT COUNT(단어) FROM dbo.contents");
-
-
+            //DB에서 값 받기
 
             String dicDB_len_sql = dicDB_len.ToString();
             String dic_sql = dicDB.ToString();
             String con_sql = contentsDB.ToString();
-            /*
-            int db_array_length = Convert.ToInt32(dicDB_len.ExecuteScalar());
+            //DB값을 저장.
+
             
-             * (//int db_array_length = int.Parse(dicDB_len.ToString());
-
-            //String[] db_array = new String[db_array_length];
-            //int count = 0;
-            */
-            Console.WriteLine(dicDB_len_sql);
-
             string stmt = "SELECT COUNT(단어) FROM dbo.word";
             string conCount = "SELECT COUNT(word) FROM dbo.contents";
             int dic_db_count = 0;
@@ -60,7 +53,6 @@ namespace basic_Algo
                     dic_db_count = (int)dic_db_cmdCount.ExecuteScalar();
                
                 }//카운트 한 값 int로 변환
-                //dic_db_Connection.Close();
             }
 
             using (SqlConnection thisConnection = new SqlConnection(connectionString))
@@ -70,11 +62,10 @@ namespace basic_Algo
                     thisConnection.Open();
                     con_db_count = (int)con_db_cmdCount.ExecuteScalar();
                 }//카운트 한 값 int로 변환
-                //thisConnection.Close();
             }
             
-            Console.WriteLine(con_db_count);
-            Console.WriteLine(dic_db_count);
+            Console.WriteLine("컨텐츠 DB의 단어 수= "+con_db_count+"개");
+            Console.WriteLine("사전 DB의 단어 수= " + dic_db_count + "개\n");
             String[,] dic_db_array = new String[dic_db_count, 2];//db카운트 값 만큼 배열 선언
             String[,] con_db_array = new String[con_db_count,2];//db카운트 값 만큼 배열 선언
             String[,] result_array = new string[con_db_count,2];
@@ -87,13 +78,10 @@ namespace basic_Algo
                    
                     while (dic_reader.Read())
                     {
-                        //Console.WriteLine("{0} {1}", reader.GetString(0), reader.GetString(1));//열 2개
-                        //Console.WriteLine("{0}", reader.GetString(0));//열 1개//테이블 출력
                         dic_db_array[dic_count, 0] = dic_reader.GetString(0);
                         dic_db_array[dic_count, 1] = dic_reader.GetString(1);//배열에 값 저장
                         dic_count += 1;
-                        //dic_db_array[count++] = reader.GetString(0);
-
+                        
                     }
                     dic_reader.Close();
                 }
@@ -107,22 +95,18 @@ namespace basic_Algo
 
                     while (reader.Read())
                     {
-                        //Console.WriteLine("{0} {1}", reader.GetString(0), reader.GetString(1));//열 2개
-                        //Console.WriteLine("{0}", reader.GetString(0));//열 1개//테이블 출력
                         String reder_data_0 = (String)reader.GetString(1);
                         con_db_array[con_count,0] = reder_data_0;
                         String reder_data_1 = (String)reader.GetString(1);
                         con_db_array[con_count, 1] = reder_data_1;
-                        //db_array[count, 1] = reader.GetString(1);//배열에 값 저장
                         con_count += 1;
-                        //Console.WriteLine(con_count);
-                        //db_array[count++] = reader.GetString(0);
                         if (con_count >= con_db_count) break;
                     }
                 }
             }
 
             con_count = 0;
+            int result_len = 0;
             while (con_count <= con_db_count)
             {
                 if (con_count >= con_db_count) break;
@@ -135,16 +119,21 @@ namespace basic_Algo
 
                         result_array[con_count, 1] = dic_db_array[j, 1];
                         result_array[con_count, 0] = dic_db_array[j, 0];
-                        Console.WriteLine(result_array[con_count, 1]);
+                        result_len++;
                     }
                 }
-                //Console.WriteLine(result_array[con_count++]);
                 con_count++;
 
-
             }
+            print_rating_count(con_db_count, result_array, result_len);
+
+        }
+
+        public static void print_rating_count(int con_db_count, String[,] result_array, int result_len)
+        {
             int result_count = 0;
             int score = 0;
+
             while (true)
             {
                 if (result_count >= con_db_count) break;
@@ -173,43 +162,14 @@ namespace basic_Algo
                         break;
 
                 }
-                
-                //Console.Write(score);
-                //Console.Write("\t");
-                //Console.Write(key);
-                //Console.Write("\t");
                 result_count++;
 
             }
             Console.WriteLine("\n");
-            Console.WriteLine("최종 등급 점수는 = " + score + "점");
-
-
-            /*int test_count = 0;
-              while (test_count < dic_db_count)
-              {
-                  Console.Write(dic_db_array[test_count, 0]);
-                  Console.Write("\t");
-                  Console.Write(dic_db_array[test_count, 1]);
-                  Console.Write("\n");
-
-                  test_count += 1;
-
-              }*/
-
-
-            /*test_count = 0;
-              while (test_count < dic_db_count)
-              {
-                  Console.Write(con_db_array[test_count]);
-                  Console.Write("\t");
-                  test_count += 1;
-                  if (test_count >= con_db_count) break;
-
-              }
-              //값 저장확인
-              */
+            Console.WriteLine("유의미한 단어 수= " + result_len + "개");
+            Console.WriteLine("최종 등급 점수는 = " + score + "점\n");
 
         }
+       //void db_length() { }
     }
 }

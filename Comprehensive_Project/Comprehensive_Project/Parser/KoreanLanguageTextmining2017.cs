@@ -29,5 +29,13 @@ namespace Comprehensive_Project.Parser
             proc.Start();    //프로세스 시작
             proc.StandardInput.Write( "파일이름" + Environment.NewLine);
         }
+
+
+        public String[] StringSplit(String input)
+        {
+            String[] splitResult = input.Split(new char[] { ' ' });
+
+            return splitResult;
+        }
     }
 }

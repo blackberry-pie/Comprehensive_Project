@@ -10,10 +10,18 @@ namespace Comprehensive_Project.Parser
     {
 
         private String result;
+        private static String[] resultArray;
 
         public KoreanParser(String input)
         {
             this.result = this.Tokenize(input);
+            KoreanParser.resultArray = this.StringSplit(result);
+            for (int i = 0; i < resultArray.Length; i++)
+            {
+                Console.WriteLine(resultArray[i]);
+            }
+
+
         }
         public String Tokenize(String input)
         {
@@ -31,9 +39,16 @@ namespace Comprehensive_Project.Parser
             return TokenizeResult.ToString();
         }
 
-        public String getResult()
+        public  String[] StringSplit(String input)
         {
-            return result;
+            String[] splitResult = input.Split(new char[] { ' ' });
+
+            return splitResult;
+        }
+
+        public static String[] getResult()
+        {
+            return resultArray;
         }
     }
 }

@@ -27,6 +27,7 @@ namespace Comprehensive_Project.Parser
             proc.EnableRaisingEvents = false;
             proc.StartInfo = psi;
             proc.Start();    //프로세스 시작
+            proc.StandardInput.Write( "파일이름" + Environment.NewLine);
         }
     }
 }

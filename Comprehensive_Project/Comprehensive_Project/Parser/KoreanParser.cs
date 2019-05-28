@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Moda.Korean.TwitterKoreanProcessorCS;
-namespace Comprehensive_Project
+namespace Comprehensive_Project.Parser
 {
-    class Parser
+    class KoreanParser
     {
 
         private String result;
 
-        public Parser(String input)
+        public KoreanParser(String input)
         {
             this.result = this.Tokenize(input);
         }

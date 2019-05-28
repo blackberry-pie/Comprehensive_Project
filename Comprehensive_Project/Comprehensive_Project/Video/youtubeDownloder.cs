@@ -36,11 +36,7 @@ namespace Comprehensive_Project.Video
 
             String resultFileName = proc.StandardOutput.ReadToEnd();
 
-            //Console.WriteLine("파일이름(다운로드 클래스 ReadToEnd직후) : " + resultFileName);
-
             this.InvalidPathCharsRemove(ref resultFileName);
-
-
 
             if (error != null)
             {
@@ -49,7 +45,6 @@ namespace Comprehensive_Project.Video
             resultValue = resultFileName;
 
             proc.WaitForExit();
-
             proc.Close();
 
         }

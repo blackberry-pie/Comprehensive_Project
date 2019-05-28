@@ -19,14 +19,8 @@ namespace Comprehensive_Project.DataBase
             this.TruncateContentsTable();
             this.InsertData(input);
         }
-
-
         public void InsertData(String[] data)
         {
-
-
-
-
             using (SqlConnection connect = new SqlConnection(connectionString))
             {
                 connect.Open();
@@ -47,17 +41,10 @@ namespace Comprehensive_Project.DataBase
                         command.Parameters["@word"].Value = data[i];
                         command.ExecuteNonQuery();
                     }
-
-
-
                 }
-
-
                 connect.Close();
                 Console.WriteLine("sql insert finish");
             }
-
-
         }
 
         public void DeleteContentsTable()//컨텐츠 테이블 초기화
@@ -71,15 +58,11 @@ namespace Comprehensive_Project.DataBase
                 {
                     command.Parameters.Clear();
                     command.CommandType = CommandType.Text;
-
-
                     command.ExecuteNonQuery();
-
                 }
                 connect.Close();
             }
         }
-
         public void TruncateContentsTable()//컨텐츠 테이블 초기화
         {
             //delete table
@@ -91,14 +74,10 @@ namespace Comprehensive_Project.DataBase
                 {
                     command.Parameters.Clear();
                     command.CommandType = CommandType.Text;
-
-
                     command.ExecuteNonQuery();
-
                 }
                 connect.Close();
             }
         }
-
     }
 }

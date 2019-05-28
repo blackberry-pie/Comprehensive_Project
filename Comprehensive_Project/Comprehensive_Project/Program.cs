@@ -9,26 +9,18 @@ namespace Comprehensive_Project
     {
         private static readonly string bucketname = "speech_limit";
 
-
-
         static int Main(string[] args)
-        {
-            
+        {         
             var youtubeLink = Console.ReadLine();
             //youtube 다운로더 모듈 시작
             Comprehensive_Project.Video.YoutubeDownloder yd = new Comprehensive_Project.Video.YoutubeDownloder(youtubeLink); //args[0]로는 안됨. 직접 값을 넣을 경우 작동함
             var fileName =  yd.getResult();
             Console.WriteLine("파일 이름:" + fileName);
             //youtube 다운로더 모듈 종료
-
             
             String objectName = fileName; //구글 스토리지에 업로드되는 이름
             String filePath = fileName; //업로드 대상 로컬쪽
             Console.WriteLine("filePath : "+filePath);
-
-            //String objectName = "mono+범죄도시中 진선규 조선족 연기ㄷㄷㄷ.flac";//구글 스토리지에 업로드되는 이름
-            //String filePath = "mono+범죄도시中 진선규 조선족 연기ㄷㄷㄷ.flac";//업로드 대상 로컬쪽
-
 
             //STT 모듈 시작
             //GCP Storage upload 모듈
@@ -53,21 +45,13 @@ namespace Comprehensive_Project
 
             var splitresult = Program.StringSplit(parserResult);
 
-            /*
-              //배열 출력 확인용
-            for(int i = 0;i < splitresult.Length;i++)
-            {
-                Console.WriteLine(splitresult[i]);
-            }
-            */
             Comprehensive_Project.DataBase.DataBaseAccess dbas = new Comprehensive_Project.DataBase.DataBaseAccess(splitresult);
             Console.ReadKey();
             return 0;
 
-
         }
 
-        public static String[] StringSplit(String input)
+        public static String[] StringSplit(String input) // 다른 클래스로 옮기기
         {
             String[] splitResult = input.Split(new char[]{' '});
 

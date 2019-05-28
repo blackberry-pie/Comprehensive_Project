@@ -15,7 +15,18 @@ namespace Comprehensive_Project.Parser
 
         public KoreanLanguageTextmining2017(String input)
         {
+            psi = new ProcessStartInfo();
+            proc = new Process();
+            psi.FileName = PROCESS_NAME_CMD;
+            psi.CreateNoWindow = false;  // cmd 창 띄우기 -- true(띄우지 않기.) false(띄우기)
+            psi.UseShellExecute = false;
+            psi.RedirectStandardOutput = true; // cmd 데이터 받기
+            psi.RedirectStandardInput = true; // cmd 데이터 보내기
+            psi.RedirectStandardError = true; // cmd 오류내용 받기
 
+            proc.EnableRaisingEvents = false;
+            proc.StartInfo = psi;
+            proc.Start();    //프로세스 시작
         }
     }
 }

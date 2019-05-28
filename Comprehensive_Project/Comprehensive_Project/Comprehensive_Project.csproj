@@ -230,8 +230,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Parser\KLT2010-TestVersion-2017.zip" />
+    <None Include="Parser\README.md" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Parser\KLT2000-TEST.dll" />
     <Content Include="Video\ffmpeg.exe" />
     <Content Include="Video\youtubedownloader.exe" />
   </ItemGroup>

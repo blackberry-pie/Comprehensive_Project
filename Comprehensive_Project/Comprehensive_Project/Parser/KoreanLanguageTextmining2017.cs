@@ -12,7 +12,7 @@ namespace Comprehensive_Project.Parser
         static ProcessStartInfo psi = null;
         static Process proc = null;
         String resultValue = null;
-
+        private static String[] resultArray;
         public KoreanLanguageTextmining2017(String input)
         {
             psi = new ProcessStartInfo();
@@ -36,6 +36,10 @@ namespace Comprehensive_Project.Parser
             String[] splitResult = input.Split(new char[] { ' ' });
 
             return splitResult;
+        }
+        public static String[] getResult()
+        {
+            return resultArray;
         }
     }
 }

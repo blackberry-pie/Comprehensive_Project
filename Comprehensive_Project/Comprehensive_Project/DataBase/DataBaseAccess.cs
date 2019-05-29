@@ -9,10 +9,10 @@ namespace Comprehensive_Project.DataBase
 {
     class DataBaseAccess
     {
-        private String insetSql = "INSERT INTO dbo.contents (number,word) VALUES (@number, @word)";
-        private String deleteSql = "DELETE FROM dbo.contents";
-        private String truncateSql = "TRUNCATE TABLE dbo.contents";
-        private String connectionString = "server = hyunsam.asuscomm.com; Database = dictionary; User id = tester; Password = tester";
+        private readonly String insetSql = "INSERT INTO dbo.contents (number,word) VALUES (@number, @word)";
+        private readonly String deleteSql = "DELETE FROM dbo.contents";
+        private readonly String truncateSql = "TRUNCATE TABLE dbo.contents";
+        private readonly String connectionString = "server = hyunsam.asuscomm.com; Database = dictionary; User id = tester; Password = tester";
 
         public DataBaseAccess(String[] input)
         {

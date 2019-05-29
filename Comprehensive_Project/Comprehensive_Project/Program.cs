@@ -14,7 +14,7 @@ namespace Comprehensive_Project
             var youtubeLink = Console.ReadLine();
             //youtube 다운로더 모듈 시작
             Comprehensive_Project.Video.YoutubeDownloder yd = new Comprehensive_Project.Video.YoutubeDownloder(youtubeLink); //args[0]로는 안됨. 직접 값을 넣을 경우 작동함
-            var fileName = yd.getResult();
+            var fileName = yd.GetResult();
             Console.WriteLine("파일 이름:" + fileName);
             //youtube 다운로더 모듈 종료
 
@@ -25,12 +25,12 @@ namespace Comprehensive_Project
             //STT 모듈 시작
             //GCP Storage upload 모듈
             var storage = new Comprehensive_Project.Google_Cloud_Platform.GCPStorageUpload(bucketname, filePath, objectName);
-            String storageUri = storage.getFileStorageLink();
+            String storageUri = storage.GetFileStorageLink();
 
 
             ///GCP Speech-to-Text 모듈
             Comprehensive_Project.Google_Cloud_Platform.SpeechToText stt = new Comprehensive_Project.Google_Cloud_Platform.SpeechToText(storageUri);
-            var sttResult = stt.getResult();
+            var sttResult = stt.GetResult();
             //STT 모듈 종료
 
             Console.WriteLine("stt 결과 : " + sttResult + "\n\n\n\n\n\n\n");
@@ -38,7 +38,7 @@ namespace Comprehensive_Project
 
             //Parser 모듈 시작
             Comprehensive_Project.Parser.KoreanParser parser = new Comprehensive_Project.Parser.KoreanParser(sttResult);
-            var parserResult = Comprehensive_Project.Parser.KoreanParser.getResult();
+            var parserResult = Comprehensive_Project.Parser.KoreanParser.GetResult();
             //Parser 모듈 종료
             //var newParserKLT = new Comprehensive_Project.Parser.KoreanLanguageTextmining2017(sttResult);
             //var parserResultKLT = Comprehensive_Project.Parser.KoreanLanguageTextmining2017.getResult();

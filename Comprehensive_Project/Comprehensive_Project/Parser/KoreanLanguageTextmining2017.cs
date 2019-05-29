@@ -37,7 +37,7 @@ namespace Comprehensive_Project.Parser
 
             return splitResult;
         }
-        public static String[] getResult()
+        public static String[] GetResult()
         {
             return resultArray;
         }

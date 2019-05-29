@@ -14,7 +14,7 @@ namespace Comprehensive_Project.Google_Cloud_Platform
 
     class GCPStorageUpload
     {
-        String FileStorageLink;
+        String fileStorageLink;
         public GCPStorageUpload(string bucketName, string localPath, string objectName = null)
         {
             Console.WriteLine("localPath : "+ localPath);
@@ -30,12 +30,12 @@ namespace Comprehensive_Project.Google_Cloud_Platform
                 storage.UploadObject(bucketName, objectName, null, f);
                 Console.WriteLine($"Uploaded {objectName}.");
             }
-            FileStorageLink = "gs://" + bucketName + "/" + objectName; // 파일 링크 생성
+            fileStorageLink = "gs://" + bucketName + "/" + objectName; // 파일 링크 생성
         }
 
-        public String getFileStorageLink()
+        public String GetFileStorageLink()
         {
-            return FileStorageLink;
+            return fileStorageLink;
         }
 
     }

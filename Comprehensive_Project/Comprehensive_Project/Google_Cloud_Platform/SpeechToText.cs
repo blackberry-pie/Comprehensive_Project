@@ -33,7 +33,7 @@ namespace Comprehensive_Project.Google_Cloud_Platform
                 }
             }
         }
-        public String getResult()
+        public String GetResult()
         {
             return sttResult.ToString();
         }

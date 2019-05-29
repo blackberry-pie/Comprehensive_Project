@@ -49,7 +49,11 @@ namespace Comprehensive_Project
             }
             Console.WriteLine("끝");
 
-            //Comprehensive_Project.DataBase.DataBaseAccess dbas = new Comprehensive_Project.DataBase.DataBaseAccess(parserResult);
+            Comprehensive_Project.DataBase.DataBaseAccess dbas = new Comprehensive_Project.DataBase.DataBaseAccess(parserResult);
+
+            //var fileIO = new Comprehensive_Project.FileInputOutput.FileIO(fileName);
+            //fileIO.AllVoiceLocalFileDelete();//Debug폴더의 파일 삭제
+
             Console.ReadKey();
             return 0;
 

@@ -9,17 +9,18 @@ namespace Comprehensive_Project.FileInputOutput
 {
     class FileIO
     {
-        private String fileName;
-        String fileNameMp4;
-        String fileNameWebm;
-        String fileNameFlacmono;
+        private String fileName; //filename.flac 형식
+        private String onlyFileName; // 파일명만 추출
+        String fileNameMp4;//filename.mp4
+        String fileNameWebm;//filename.webm
+        String fileNameFlacmono; //mono+filename.flac
         public FileIO(String fileName)
         {
             this.fileName = fileName;
             this.FileExtensionChange();
 
         }
-        public void AllVoiceLocalFileDelete(String fileName)
+        public void AllVoiceLocalFileDelete()
         {
 
             if (Exists(fileNameMp4))
@@ -47,24 +48,29 @@ namespace Comprehensive_Project.FileInputOutput
                 }
                 catch (Exception e)
                 {
-
+                    Console.WriteLine(e.Message);
                     throw;
                 }
             }
+            try
+            {
+                Delete(fileName);
+                Delete(fileNameFlacmono);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
 
-
-            Delete(fileName + ".webm");
-            //mp4이거나 webm인지 확인하고 삭제할것 : 오류방지?
-            Delete(fileName + ".flac");
-            Delete("mono+" + fileName + ".flac");
         }
         private void FileExtensionChange()
         {
-            this.fileNameMp4 = this.fileName.Replace(".flac", ".mp4");//mp4파일명으로 교체
-            this.fileNameWebm = this.fileName.Replace(".flac", ".webm");//webm파일으로 교체
+            onlyFileName = Path.GetFileNameWithoutExtension(fileName);
+
+            this.fileNameMp4 = this.onlyFileName + ".mp4";//mp4파일명으로 교체
+            this.fileNameWebm = this.onlyFileName + ".webm";//webm파일으로 교체
             this.fileNameFlacmono = "mono+" + this.fileName;//mono flac파일 명으로 교체
         }
-
-
     }
 }

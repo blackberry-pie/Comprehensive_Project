@@ -23,17 +23,29 @@ namespace Comprehensive_Project.FileInputOutput
             this.currentPath = System.IO.Directory.GetCurrentDirectory();//파일 실행 위치 디렉토리로 받기
             this.FileName = fileName;
             this.FileExtensionChange();// flac mp4 webm 확장자로 설정
-            FilePathSet(); //각각의 확장자의 경로 설정
+            this.FilePathSet(); //각각의 확장자의 경로 설정
         }
-        public void FileRead(String OpenFileName)
+        public void FileWrite(String WriteFileName, String contents)
+        {
+            String savePath = "../../Parser/KLT2010-TestVersion-2017/EXE/" + WriteFileName;
+            System.IO.File.WriteAllText(savePath, contents, Encoding.Default);//운영체제의 현재 ANSI 코드 페이지에 대한 인코딩을 가
+
+            using (Stream fs = new FileStream(savePath, FileMode.Create))//새파일 생성, 파일이 있을 경우 해당 파일 덮어씀
+            {
+
+            }
+            
+
+        }
+        public void FileRead(String ReadFileName)
         {
 
         }
         public string FileName { get => fileName; set => fileName = value; }
 
-        public void AllVoiceLocalFileDelete()
+        public void AlㅣLocalFileDelete()
         {
-            if (System.IO.File.Exists(filePathMp4))
+            if (System.IO.File.Exists(filePathMp4))//mp4파일 확인 후 삭제
             {
                 try
                 {
@@ -47,8 +59,7 @@ namespace Comprehensive_Project.FileInputOutput
                     throw;
                 }
             }
-
-            if (System.IO.File.Exists(filePathWebm))
+            else if (System.IO.File.Exists(filePathWebm))//webm파일 확인 후 삭제
             {
                 try
                 {

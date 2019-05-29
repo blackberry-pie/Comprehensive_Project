@@ -11,6 +11,7 @@ namespace Comprehensive_Project
         //https://www.youtube.com/watch?v=vpnY2CBLOiY 범죄도시 테스트용
         static int Main(string[] args)
         {
+            
             var youtubeLink = Console.ReadLine();
             //youtube 다운로더 모듈 시작
             Comprehensive_Project.Video.YoutubeDownloder yd = new Comprehensive_Project.Video.YoutubeDownloder(youtubeLink); //args[0]로는 안됨. 직접 값을 넣을 경우 작동함
@@ -48,10 +49,12 @@ namespace Comprehensive_Project
                 Console.WriteLine(parserResult[i]);
             }
             Console.WriteLine("끝");
-
+            
             //Comprehensive_Project.DataBase.DataBaseAccess dbas = new Comprehensive_Project.DataBase.DataBaseAccess(parserResult);
-            //var fileIO = new Comprehensive_Project.FileInputOutput.FileIO(objectName);
-            //fileIO.AllVoiceLocalFileDelete();
+
+            //처리 후 삭제
+            var fileIO = new Comprehensive_Project.FileInputOutput.FileIO(objectName);
+            fileIO.AllVoiceLocalFileDelete();
             Console.ReadKey();
             return 0;
 

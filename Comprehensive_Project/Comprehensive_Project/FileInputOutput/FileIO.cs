@@ -9,6 +9,7 @@ namespace Comprehensive_Project.FileInputOutput
 {
     class FileIO
     {
+        private String currentPath;// = @"C:\Users\Public\TestFolder";
         private String fileName; //filename.flac 형식
         private String onlyFileName; // 파일명만 추출
         String fileNameMp4;//filename.mp4
@@ -16,10 +17,18 @@ namespace Comprehensive_Project.FileInputOutput
         String fileNameFlacmono; //mono+filename.flac
         public FileIO(String fileName)
         {
-            this.fileName = fileName;
+            this.FileName = fileName;
             this.FileExtensionChange();
+            this.currentPath = GetCurrentDirectory();
+            //http://bbs.nicklib.com/application/4051
 
         }
+        public void FileRead(String OpenFileName)
+        {
+
+        }
+        public string FileName { get => fileName; set => fileName = value; }
+
         public void AllVoiceLocalFileDelete()
         {
 
@@ -27,9 +36,9 @@ namespace Comprehensive_Project.FileInputOutput
             {
                 try
                 {
-                    Console.WriteLine(fileName + ".mp4 파일 존재");
-                    Delete(fileNameMp4);
-                    Console.WriteLine(fileName + ".mp4 파일 삭제 성공");
+                    Console.WriteLine(FileName + ".mp4 파일 존재");
+                    Delete(currentPath + fileNameMp4);
+                    Console.WriteLine(FileName + ".mp4 파일 삭제 성공");
                 }
                 catch (Exception e)
                 {
@@ -41,9 +50,9 @@ namespace Comprehensive_Project.FileInputOutput
             {
                 try
                 {
-                    Console.WriteLine(fileName + ".webm 파일 존재");
+                    Console.WriteLine(FileName + ".webm 파일 존재");
                     Delete(fileNameWebm);
-                    Console.WriteLine(fileName + ".webm 파일 삭제 성공");
+                    Console.WriteLine(FileName + ".webm 파일 삭제 성공");
 
                 }
                 catch (Exception e)
@@ -54,7 +63,7 @@ namespace Comprehensive_Project.FileInputOutput
             }
             try
             {
-                Delete(fileName);
+                Delete(FileName);
                 Delete(fileNameFlacmono);
             }
             catch (Exception e)
@@ -66,11 +75,12 @@ namespace Comprehensive_Project.FileInputOutput
         }
         private void FileExtensionChange()
         {
-            onlyFileName = Path.GetFileNameWithoutExtension(fileName);
+            onlyFileName = Path.GetFileNameWithoutExtension(FileName);
 
             this.fileNameMp4 = this.onlyFileName + ".mp4";//mp4파일명으로 교체
             this.fileNameWebm = this.onlyFileName + ".webm";//webm파일으로 교체
-            this.fileNameFlacmono = "mono+" + this.fileName;//mono flac파일 명으로 교체
+            this.fileNameFlacmono = "mono+" + this.FileName;//mono flac파일 명으로 교체
         }
+
     }
 }

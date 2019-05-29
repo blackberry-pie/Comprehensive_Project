@@ -8,7 +8,7 @@ namespace Comprehensive_Project
     class Program
     {
         private static readonly string bucketname = "speech_limit";
-
+        //https://www.youtube.com/watch?v=vpnY2CBLOiY 범죄도시 테스트용
         static int Main(string[] args)
         {
             var youtubeLink = Console.ReadLine();
@@ -50,6 +50,8 @@ namespace Comprehensive_Project
             Console.WriteLine("끝");
 
             //Comprehensive_Project.DataBase.DataBaseAccess dbas = new Comprehensive_Project.DataBase.DataBaseAccess(parserResult);
+            //var fileIO = new Comprehensive_Project.FileInputOutput.FileIO(objectName);
+            //fileIO.AllVoiceLocalFileDelete();
             Console.ReadKey();
             return 0;
 

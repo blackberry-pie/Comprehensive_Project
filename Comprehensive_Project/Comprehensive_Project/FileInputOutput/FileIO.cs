@@ -8,7 +8,7 @@ namespace Comprehensive_Project.FileInputOutput
 {
     class FileIO
     {
-        private String currentPath;// = @"C:\Users\Public\TestFolder";
+        private String currentPath;
         private String fileName; //filename.flac 형식으로 받음
         private String filePath; // 디렉토리 경로 + 파일명+확장자
         private String onlyFileName; // 파일명만 추출
@@ -23,6 +23,7 @@ namespace Comprehensive_Project.FileInputOutput
         private String outputPath = "../../Parser/KLT2010-TestVersion-2017/EXE/output.txt";
         public FileIO(String fileName)
         {
+            fileName = fileName.Replace("mono+","");//파일 앞부분 mono+제거용
             this.currentPath = System.IO.Directory.GetCurrentDirectory();//파일 실행 위치 디렉토리로 받기
             this.FileName = fileName;
             this.FileExtensionChange();// flac mp4 webm 확장자로 설정
@@ -34,11 +35,11 @@ namespace Comprehensive_Project.FileInputOutput
             try
             {
                 System.IO.File.WriteAllText(savePath, contents, Encoding.Default);
-                Console.WriteLine(WriteFileName + "파일 생성 완료");
+                Console.WriteLine(savePath + "경로에 파일 생성 완료");
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
+                Console.WriteLine(e.Message);
                 throw;
             }
             /*
@@ -57,8 +58,9 @@ namespace Comprehensive_Project.FileInputOutput
             {
                 System.IO.File.ReadAllText(loadPath, Encoding.Default);
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 readValue = "Error";
                 throw;
             }
@@ -97,7 +99,7 @@ namespace Comprehensive_Project.FileInputOutput
                     throw;
                 }
             }
-
+            /*
             if (savePath != null && System.IO.File.Exists(savePath))
             {
                 try //input파일 삭제
@@ -111,13 +113,13 @@ namespace Comprehensive_Project.FileInputOutput
                     throw;
                 }
             }
-
-            if (savePath != null && System.IO.File.Exists(savePath))
+            
+            if (outputPath != null && System.IO.File.Exists(outputPath))
             {
-                try //input파일 삭제
+                try //output파일 삭제
                 {
-                    System.IO.File.Delete(savePath);
-                    Console.WriteLine("input.txt 파일 삭제 성공");
+                    System.IO.File.Delete(outputPath);
+                    Console.WriteLine("output.txt 파일 삭제 성공");
                 }
                 catch (Exception e)
                 {
@@ -125,12 +127,13 @@ namespace Comprehensive_Project.FileInputOutput
                     throw;
                 }
             }
+            */
             try
             {
                 System.IO.File.Delete(filePath);
                 Console.WriteLine(fileName + "파일 삭제 성공");
                 System.IO.File.Delete(filePathFlacmono);
-                Console.WriteLine("mono+" + fileName + "파일 삭제 성공");
+                Console.WriteLine(fileNameFlacmono + "파일 삭제 성공");
             }
             catch (Exception e)
             {
@@ -153,6 +156,7 @@ namespace Comprehensive_Project.FileInputOutput
             this.filePathMp4 = this.currentPath + @"\" + this.fileNameMp4;
             this.filePathWebm = this.currentPath + @"\" + this.fileNameWebm;
             this.filePathFlacmono = this.currentPath + @"\" + this.fileNameFlacmono;
+            
         }
 
     }

@@ -50,7 +50,7 @@ namespace Comprehensive_Project.Video
         }
 
 
-        public String getResult()
+        public String GetResult()
         {
             return resultValue;
         }

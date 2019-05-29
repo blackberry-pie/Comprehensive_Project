@@ -16,12 +16,6 @@ namespace Comprehensive_Project.Parser
         {
             this.result = this.Tokenize(input);
             KoreanParser.resultArray = this.StringSplit(result);
-            for (int i = 0; i < resultArray.Length; i++)
-            {
-                Console.WriteLine(resultArray[i]);
-            }
-
-
         }
         public String Tokenize(String input)
         {

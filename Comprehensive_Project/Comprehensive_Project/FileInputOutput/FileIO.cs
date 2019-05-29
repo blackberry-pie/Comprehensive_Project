@@ -35,7 +35,8 @@ namespace Comprehensive_Project.FileInputOutput
             try
             {
                 System.IO.File.WriteAllText(savePath, contents, Encoding.Default);
-                Console.WriteLine(savePath + "경로에 파일 생성 완료");
+                Console.WriteLine(savePath + " 경로에 파일 생성 완료");
+                Console.WriteLine("savePath Exist? " + System.IO.File.Exists(savePath));  
             }
             catch (Exception e)
             {
@@ -131,9 +132,9 @@ namespace Comprehensive_Project.FileInputOutput
             try
             {
                 System.IO.File.Delete(filePath);
-                Console.WriteLine(fileName + "파일 삭제 성공");
+                Console.WriteLine(fileName + " 파일 삭제 성공");
                 System.IO.File.Delete(filePathFlacmono);
-                Console.WriteLine(fileNameFlacmono + "파일 삭제 성공");
+                Console.WriteLine(fileNameFlacmono + " 파일 삭제 성공");
             }
             catch (Exception e)
             {

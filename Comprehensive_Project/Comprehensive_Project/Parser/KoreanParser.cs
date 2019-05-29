@@ -8,6 +8,7 @@ namespace Comprehensive_Project.Parser
 {
     class KoreanParser
     {
+
         private String result;
         private static String[] resultArray;
 
@@ -19,6 +20,8 @@ namespace Comprehensive_Project.Parser
             {
                 Console.WriteLine(resultArray[i]);
             }
+
+
         }
         public String Tokenize(String input)
         {
@@ -35,6 +38,7 @@ namespace Comprehensive_Project.Parser
             }
             return TokenizeResult.ToString();
         }
+
         public  String[] StringSplit(String input)
         {
             String[] splitResult = input.Split(new char[] { ' ' });

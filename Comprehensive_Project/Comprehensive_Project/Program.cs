@@ -40,14 +40,13 @@ namespace Comprehensive_Project
             Comprehensive_Project.Parser.KoreanParser parser = new Comprehensive_Project.Parser.KoreanParser(sttResult);
             var parserResult = Comprehensive_Project.Parser.KoreanParser.GetResult();
             //Parser 모듈 종료
-            //var newParserKLT = new Comprehensive_Project.Parser.KoreanLanguageTextmining2017(sttResult);
-            //var parserResultKLT = Comprehensive_Project.Parser.KoreanLanguageTextmining2017.getResult();
-            Console.WriteLine("메인 본문 파서 결과 : ");
+
+            Console.WriteLine("메인 본문 파서 결과 : " + parserResult + "\n\n\n\n\n\n\n");
             for (int i = 0; i < parserResult.Length; i++)
             {
                 Console.WriteLine(parserResult[i]);
             }
-            Console.WriteLine("끝");
+            //var splitresult = Program.StringSplit(parserResult);
 
             Comprehensive_Project.DataBase.DataBaseAccess dbas = new Comprehensive_Project.DataBase.DataBaseAccess(parserResult);
 

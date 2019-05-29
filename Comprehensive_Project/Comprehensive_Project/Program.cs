@@ -48,11 +48,7 @@ namespace Comprehensive_Project
             }
             //var splitresult = Program.StringSplit(parserResult);
 
-            Comprehensive_Project.DataBase.DataBaseAccess dbas = new Comprehensive_Project.DataBase.DataBaseAccess(parserResult);
-
-            //var fileIO = new Comprehensive_Project.FileInputOutput.FileIO(fileName);
-            //fileIO.AllVoiceLocalFileDelete();//Debug폴더의 파일 삭제
-
+            //Comprehensive_Project.DataBase.DataBaseAccess dbas = new Comprehensive_Project.DataBase.DataBaseAccess(parserResult);
             Console.ReadKey();
             return 0;
 

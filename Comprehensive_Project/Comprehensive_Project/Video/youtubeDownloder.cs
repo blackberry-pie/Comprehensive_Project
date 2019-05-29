@@ -14,7 +14,7 @@ namespace Comprehensive_Project.Video
         static readonly private string PROCESS_NAME_CMD = "../../Video/youtubedownloader.exe";
         static ProcessStartInfo psi = null;
         static Process proc = null;
-        private String resultValue = null;
+        String resultValue = null;
         public YoutubeDownloder(String youtubeLink)
         {
             psi = new ProcessStartInfo();
@@ -50,7 +50,7 @@ namespace Comprehensive_Project.Video
         }
 
 
-        public String GetResult()
+        public String getResult()
         {
             return resultValue;
         }

@@ -8,12 +8,17 @@ namespace Comprehensive_Project.Parser
 {
     class KoreanLanguageTextmining2017
     {
+        //결과파일은 output.txt 고정
+        //index.exe  --- 어절 단위, line 단위, 혹은 문장 단위로 색인어를 추출
+        //indexT.exe --- 파일 단위로 색인어를 추출(빈도, 위치 계산 등)
         static readonly private string PROCESS_NAME_CMD = "../../Parser/KLT2010-TestVersion-2017/EXE/indexT.exe";
+        private readonly String outputFilePath = "../../Parser/KLT2010-TestVersion-2017/EXE/output.txt";
+        private readonly String outputFileName = "output.txt";
         static ProcessStartInfo psi = null;
         static Process proc = null;
         String resultValue = null;
         private static String[] resultArray;
-        public KoreanLanguageTextmining2017(String input)
+        public KoreanLanguageTextmining2017(String InputFileName)
         {
             psi = new ProcessStartInfo();
             proc = new Process();

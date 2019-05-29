@@ -30,9 +30,14 @@ namespace Comprehensive_Project.Google_Cloud_Platform
                 storage.UploadObject(bucketName, objectName, null, f);
                 Console.WriteLine($"Uploaded {objectName}.");
             }
-            fileStorageLink = "gs://" + bucketName + "/" + objectName; // 파일 링크 생성
+            fileStorageLink = FileStorageLinkSet(bucketName, objectName);
+             // 파일 링크 생성
         }
-
+        private String FileStorageLinkSet(String bucketName, String objectName)
+        {
+            var gcloudLink = "gs://" + bucketName + "/" + objectName;
+            return gcloudLink;
+        }
         public String GetFileStorageLink()
         {
             return fileStorageLink;

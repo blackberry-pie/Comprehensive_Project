@@ -22,6 +22,7 @@ namespace Comprehensive_Project
             String objectName = fileName; //구글 스토리지에 업로드되는 이름
             String filePath = fileName; //업로드 대상 로컬쪽
             Console.WriteLine("filePath : " + filePath);
+            var fileIO = new Comprehensive_Project.FileInputOutput.FileIO(objectName);//파일 입출력 관련 함수
 
             //STT 모듈 시작
             //GCP Storage upload 모듈
@@ -52,8 +53,8 @@ namespace Comprehensive_Project
             
             //Comprehensive_Project.DataBase.DataBaseAccess dbas = new Comprehensive_Project.DataBase.DataBaseAccess(parserResult);
 
-            //처리 후 삭제
-            var fileIO = new Comprehensive_Project.FileInputOutput.FileIO(objectName);
+            //처리 후 삭제 테스트
+
             fileIO.AllVoiceLocalFileDelete();
             Console.ReadKey();
             return 0;

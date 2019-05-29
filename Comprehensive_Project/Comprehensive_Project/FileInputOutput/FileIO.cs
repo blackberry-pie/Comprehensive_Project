@@ -24,15 +24,6 @@ namespace Comprehensive_Project.FileInputOutput
             this.FileName = fileName;
             this.FileExtensionChange();// flac mp4 webm 확장자로 설정
             FilePathSet(); //각각의 확장자의 경로 설정
-
-            Console.WriteLine("currentPath : "+currentPath);
-            Console.WriteLine("currentPath+mp4 : " + currentPath + @"\"+fileNameMp4);
-            Console.WriteLine("fileNameFlacmono : " + System.IO.File.Exists(fileNameFlacmono));
-            Console.WriteLine("filePathFlacmono : " + System.IO.File.Exists(filePathFlacmono));
-            Console.WriteLine("filePathMp4 : " + System.IO.File.Exists(filePathMp4));
-            Console.WriteLine("Exists filePathMp4 : " + filePathMp4);
-            Console.WriteLine("filePathWebm : " + filePathWebm);
-            Console.WriteLine("Exists filePathWebm : " + System.IO.File.Exists(filePathWebm));
         }
         public void FileRead(String OpenFileName)
         {

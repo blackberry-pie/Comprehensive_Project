@@ -13,7 +13,8 @@ namespace Comprehensive_Project
         static int Main(string[] args)
         {
             
-            var youtubeLink = args[0];
+            String youtubeLink = args[0];
+            Console.WriteLine("Link: " + youtubeLink);
             //youtube 다운로더 모듈 시작
             Comprehensive_Project.Video.YoutubeDownloder yd = new Comprehensive_Project.Video.YoutubeDownloder(youtubeLink); //args[0]로는 안됨. 직접 값을 넣을 경우 작동함
             var fileName = yd.GetResult();
@@ -57,9 +58,9 @@ namespace Comprehensive_Project
 
 
             var fileIO = new Comprehensive_Project.FileInputOutput.FileIO(fileName);//파일 입출력 관련 함수
-            fileIO.FileWrite(ParserInputFileName, sttResult);
+            //fileIO.FileWrite(ParserInputFileName, sttResult);
 
-            var newParserKLT = new Comprehensive_Project.Parser.KoreanLanguageTextmining2017(ParserInputFileName);
+             //var newParserKLT = new Comprehensive_Project.Parser.KoreanLanguageTextmining2017(ParserInputFileName);
 
             //var parserResultKLT = Comprehensive_Project.Parser.KoreanLanguageTextmining2017.getResult(); //결과물은 String배열 형태로 할것
 

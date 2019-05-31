@@ -13,7 +13,7 @@ namespace Comprehensive_Project
         static int Main(string[] args)
         {
             
-            var youtubeLink = Console.ReadLine();
+            var youtubeLink = args[0];
             //youtube 다운로더 모듈 시작
             Comprehensive_Project.Video.YoutubeDownloder yd = new Comprehensive_Project.Video.YoutubeDownloder(youtubeLink); //args[0]로는 안됨. 직접 값을 넣을 경우 작동함
             var fileName = yd.GetResult();

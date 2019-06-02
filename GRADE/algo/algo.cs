@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 
 
-namespace basic_Algo
+namespace Comprehensive_Project.basic_Algo
 {
    
-    class Program
+    class algo
     {
-        static void Main(string[] args)
+        public algo()
         {
             string connectionString = "server =hyunsam.asuscomm.com;Database = dictionary;User id = deokjin;Password = s2260827a";
 
@@ -42,6 +42,7 @@ namespace basic_Algo
             
             string stmt = "SELECT COUNT(단어) FROM dbo.word";
             string conCount = "SELECT COUNT(word) FROM dbo.contents";
+            //string result_count = "SELECT COUNT(word) FROM dbo.score";
             int dic_db_count = 0;
             int con_db_count = 0;
 
@@ -68,8 +69,9 @@ namespace basic_Algo
             Console.WriteLine("사전 DB의 단어 수= " + dic_db_count + "개\n");
             String[,] dic_db_array = new String[dic_db_count, 2];//db카운트 값 만큼 배열 선언
             String[,] con_db_array = new String[con_db_count,2];//db카운트 값 만큼 배열 선언
-            String[,] result_array = new string[con_db_count,2];
+            String[,] result_array = new string[con_db_count,4];//결과 값 넣을 배열
             int dic_count = 0;
+
 
             using (SqlCommand command = new SqlCommand(dic_sql, scon))
             {
@@ -120,6 +122,7 @@ namespace basic_Algo
                         result_array[con_count, 1] = dic_db_array[j, 1];
                         result_array[con_count, 0] = dic_db_array[j, 0];
                         result_len++;
+                        //Console.WriteLine(result_array[con_count, 1]);
                     }
                 }
                 con_count++;
@@ -132,7 +135,7 @@ namespace basic_Algo
         public static void print_rating_count(int con_db_count, String[,] result_array, int result_len)
         {
             int result_count = 0;
-            int score = 0;
+            double score = 0;
 
             while (true)
             {
@@ -143,19 +146,19 @@ namespace basic_Algo
                 switch (key)
                 {
                     case "4등급":
-                        score += 10;
+                        score += 0.1;
                         Console.WriteLine(db_word + "  " + key + "  " + score + "점");
                         break;
                     case "3등급":
-                        score += 6;
+                        score += 0.06;
                         Console.WriteLine(db_word + "  " + key + "  " + score + "점");
                         break;
                     case "2등급":
-                        score += 3;
+                        score += 0.03;
                         Console.WriteLine(db_word + "  " + key + "  " + score + "점");
                         break;
                     case "1등급":
-                        score += 1;
+                        score += 0.01;
                         Console.WriteLine(db_word + "  " + key + "  " + score + "점");
                         break;
                     default:
@@ -170,6 +173,6 @@ namespace basic_Algo
             Console.WriteLine("최종 등급 점수는 = " + score + "점\n");
 
         }
-       //void db_length() { }
+       
     }
 }

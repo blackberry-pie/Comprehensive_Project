@@ -11,7 +11,8 @@ namespace Comprehensive_Project.Video
 {
     class YoutubeDownloder
     {
-        static readonly private string PROCESS_NAME_CMD = @"../../Video/youtubedownloader.exe";
+        //static readonly private string PROCESS_NAME_CMD = @"../../Video/youtubedownloader.exe";//debug mode path
+        static readonly private string PROCESS_NAME_CMD = @"youtubedownloader.exe"; //release mode path
         static ProcessStartInfo psi = null;
         static Process proc = null;
         String resultValue = null;

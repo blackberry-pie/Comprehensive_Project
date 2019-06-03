@@ -8,7 +8,7 @@ namespace Comprehensive_Project
     class Program
     {
         private static readonly string bucketname = "speech_limit";
-        private static readonly String ParserInputFileName = "input.txt";
+        //private static readonly String ParserInputFileName = "input.txt";
         //https://www.youtube.com/watch?v=vpnY2CBLOiY 범죄도시 테스트용
         static int Main(string[] args)
         {

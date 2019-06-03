@@ -20,7 +20,7 @@ namespace Comprehensive_Project.FileInputOutput
         private String filePathFlacmono;
         private String savePath;
         private String loadPath;
-        private String outputPath = "../../Parser/KLT2010-TestVersion-2017/EXE/output.txt";
+        //private String outputPath = "../../Parser/KLT2010-TestVersion-2017/EXE/output.txt";
         public FileIO(String fileName)
         {
             fileName = fileName.Replace("mono+","");//파일 앞부분 mono+제거용

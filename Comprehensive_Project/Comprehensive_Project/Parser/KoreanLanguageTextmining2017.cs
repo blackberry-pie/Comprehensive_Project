@@ -17,11 +17,11 @@ namespace Comprehensive_Project.Parser
         static private string PROCESS_NAME_CMD = @"../../Parser/KLT2010-TestVersion-2017/EXE/indexT.exe";
         private readonly String inputFilePath = "../../Parser/KLT2010-TestVersion-2017/EXE/";
         private readonly String outputFilePath = "../../Parser/KLT2010-TestVersion-2017/EXE/output.txt";
-        private readonly String outputFileName = "output.txt";
+        // readonly String outputFileName = "output.txt";
         static ProcessStartInfo psi = null;
         static Process proc = null;
-        String resultValue = null;
-        private static String[] resultArray;
+        //String resultValue = null;
+        private static String[] resultArray = null;
         public KoreanLanguageTextmining2017(String InputFileName)
         {
 

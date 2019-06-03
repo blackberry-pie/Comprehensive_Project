@@ -43,7 +43,7 @@ namespace Comprehensive_Project.DataBase
                     }
                 }
                 connect.Close();
-                Console.WriteLine("sql insert finish");
+                //Console.WriteLine("sql insert finish");
             }
         }
 

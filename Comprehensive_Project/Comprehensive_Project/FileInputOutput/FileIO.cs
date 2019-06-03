@@ -75,9 +75,9 @@ namespace Comprehensive_Project.FileInputOutput
             {
                 try
                 {
-                    Console.WriteLine(FileName + ".mp4 파일 존재");
+                    //Console.WriteLine(FileName + ".mp4 파일 존재");
                     System.IO.File.Delete(filePathMp4);
-                    Console.WriteLine(FileName + ".mp4 파일 삭제 성공");
+                    //Console.WriteLine(FileName + ".mp4 파일 삭제 성공");
                 }
                 catch (Exception e)
                 {
@@ -89,9 +89,9 @@ namespace Comprehensive_Project.FileInputOutput
             {
                 try
                 {
-                    Console.WriteLine(FileName + ".webm 파일 존재");
+                    //Console.WriteLine(FileName + ".webm 파일 존재");
                     System.IO.File.Delete(filePathWebm);
-                    Console.WriteLine(FileName + ".webm 파일 삭제 성공");
+                    //Console.WriteLine(FileName + ".webm 파일 삭제 성공");
 
                 }
                 catch (Exception e)
@@ -132,9 +132,9 @@ namespace Comprehensive_Project.FileInputOutput
             try
             {
                 System.IO.File.Delete(filePath);
-                Console.WriteLine(fileName + " 파일 삭제 성공");
+                //Console.WriteLine(fileName + " 파일 삭제 성공");
                 System.IO.File.Delete(filePathFlacmono);
-                Console.WriteLine(fileNameFlacmono + " 파일 삭제 성공");
+                //Console.WriteLine(fileNameFlacmono + " 파일 삭제 성공");
             }
             catch (Exception e)
             {

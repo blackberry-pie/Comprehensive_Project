@@ -46,14 +46,14 @@ namespace Comprehensive_Project
             Comprehensive_Project.Parser.KoreanParser parser = new Comprehensive_Project.Parser.KoreanParser(sttResult);
             var parserResult = Comprehensive_Project.Parser.KoreanParser.GetResult();
             //Parser 모듈 종료
-
+            
             Console.WriteLine("메인 본문 파서 결과 : ");
             for (int i = 0; i < parserResult.Length; i++)
             {
                 Console.WriteLine(parserResult[i]);
             }
             Console.WriteLine("끝");
-
+            
 
 
 
@@ -66,12 +66,14 @@ namespace Comprehensive_Project
 
 
             Comprehensive_Project.DataBase.DataBaseAccess dbas = new Comprehensive_Project.DataBase.DataBaseAccess(parserResult);
+
+            Console.Clear();
             Comprehensive_Project.basic_Algo.algo algo = new Comprehensive_Project.basic_Algo.algo();
 
             //처리 후 삭제 테스트
 
             fileIO.AlㅣLocalFileDelete();
-            Console.ReadKey();
+            //Console.ReadKey();
             return 0;
 
         }

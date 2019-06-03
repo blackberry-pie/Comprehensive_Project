@@ -218,6 +218,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="algo.cs" />
     <Compile Include="DataBase\DataBaseAccess.cs" />
     <Compile Include="FileInputOutput\FileIO.cs" />
     <Compile Include="Google_Cloud_Platform\GCPStorageUpload.cs" />

@@ -66,6 +66,7 @@ namespace Comprehensive_Project
 
 
             Comprehensive_Project.DataBase.DataBaseAccess dbas = new Comprehensive_Project.DataBase.DataBaseAccess(parserResult);
+            Comprehensive_Project.basic_Algo.algo algo = new Comprehensive_Project.basic_Algo.algo();
 
             //처리 후 삭제 테스트
 

@@ -67,7 +67,7 @@ namespace Comprehensive_Project.basic_Algo
             
             Console.WriteLine("컨텐츠 DB의 단어 수= "+con_db_count+"개");
             Console.WriteLine("사전 DB의 단어 수= " + dic_db_count + "개\n");
-            String[,] dic_db_array = new String[dic_db_count, 2];//db카운트 값 만큼 배열 선언
+            String[,] dic_db_array = new String[dic_db_count, 4];//db카운트 값 만큼 배열 선언
             String[,] con_db_array = new String[con_db_count,2];//db카운트 값 만큼 배열 선언
             String[,] result_array = new string[con_db_count,4];//결과 값 넣을 배열
             int dic_count = 0;
@@ -82,7 +82,14 @@ namespace Comprehensive_Project.basic_Algo
                     {
                         dic_db_array[dic_count, 0] = dic_reader.GetString(0);
                         dic_db_array[dic_count, 1] = dic_reader.GetString(1);//배열에 값 저장
+                        dic_db_array[dic_count, 2] = dic_reader.GetString(2);//배열에 값 저장
+                        dic_db_array[dic_count, 3] = dic_reader.GetString(3);//배열에 값 저장
+                        //Console.Write(dic_db_array[dic_count, 0]+"\t");
+                        //Console.Write(dic_db_array[dic_count, 1] + "\t");
+                        //Console.Write(dic_db_array[dic_count, 2] + "\t");
+                        //Console.Write(dic_db_array[dic_count, 3] + "\n");
                         dic_count += 1;
+                        
                         
                     }
                     dic_reader.Close();
@@ -119,8 +126,10 @@ namespace Comprehensive_Project.basic_Algo
                     if (con_key == dic_key)
                     {
 
-                        result_array[con_count, 1] = dic_db_array[j, 1];
                         result_array[con_count, 0] = dic_db_array[j, 0];
+                        result_array[con_count, 1] = dic_db_array[j, 1];
+                        result_array[con_count, 2] = dic_db_array[j, 2];
+                        result_array[con_count, 3] = dic_db_array[j, 3];
                         result_len++;
                         //Console.WriteLine(result_array[con_count, 1]);
                     }
@@ -128,38 +137,44 @@ namespace Comprehensive_Project.basic_Algo
                 con_count++;
 
             }
-            print_rating_count(con_db_count, result_array, result_len);
+            print_rating_count(con_db_count, result_array,1);
+            print_rating_count(con_db_count, result_array,2);
+            print_rating_count(con_db_count, result_array,3);
 
         }
-
-        public static void print_rating_count(int con_db_count, String[,] result_array, int result_len)
+        
+        public static void print_rating_count(int con_db_count, String[,] result_array, int col)
         {
             int result_count = 0;
             double score = 0;
+            string[,] sum_score = new string[4, 2];
+            sum_score[1, 0] = "성차별";
+            sum_score[2, 0] = "인종차별";
+            sum_score[3, 0] = "비속어";
 
             while (true)
             {
                 if (result_count >= con_db_count) break;
 
-                string key = result_array[result_count, 1];
+                string key = result_array[result_count, col];
                 string db_word = result_array[result_count, 0];
                 switch (key)
                 {
                     case "4등급":
                         score += 0.1;
-                        Console.WriteLine(db_word + "  " + key + "  " + score + "점");
+                        Console.WriteLine(db_word + "  " +sum_score[col,0]+" "+ key + "  " + score + "점");
                         break;
                     case "3등급":
                         score += 0.06;
-                        Console.WriteLine(db_word + "  " + key + "  " + score + "점");
+                        Console.WriteLine(db_word + "  " + sum_score[col, 0] + " " + key + "  " + score + "점");
                         break;
                     case "2등급":
                         score += 0.03;
-                        Console.WriteLine(db_word + "  " + key + "  " + score + "점");
+                        Console.WriteLine(db_word + "  " + sum_score[col, 0] + " " + key + "  " + score + "점");
                         break;
                     case "1등급":
                         score += 0.01;
-                        Console.WriteLine(db_word + "  " + key + "  " + score + "점");
+                        Console.WriteLine(db_word + "  " + sum_score[col, 0] + " " + key + "  " + score + "점");
                         break;
                     default:
                         break;
@@ -168,9 +183,11 @@ namespace Comprehensive_Project.basic_Algo
                 result_count++;
 
             }
+
+            sum_score[col, 1] = score.ToString("F");
             Console.WriteLine("\n");
-            Console.WriteLine("유의미한 단어 수= " + result_len + "개");
-            Console.WriteLine("최종 등급 점수는 = " + score + "점\n");
+            //Console.WriteLine("유의미한 단어 수= " + result_len + "개");
+            Console.WriteLine("최종"+sum_score[col,0] +"등급 점수는 = " + sum_score[col,1] + "점\n");
 
         }
        

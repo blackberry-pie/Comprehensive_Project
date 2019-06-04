@@ -8,12 +8,12 @@ using System.Data.SqlClient;
 
 namespace Comprehensive_Project.basic_Algo
 {
-   
+
     class algo
     {
         public algo()
         {
-            
+
             string connectionString = "server =hyunsam.asuscomm.com;Database = dictionary;User id = deokjin;Password = s2260827a";
 
             SqlConnection scon = new SqlConnection(connectionString);
@@ -40,7 +40,7 @@ namespace Comprehensive_Project.basic_Algo
             String con_sql = contentsDB.ToString();
             //DB값을 저장.
 
-            
+
             string stmt = "SELECT COUNT(단어) FROM dbo.word";
             string conCount = "SELECT COUNT(word) FROM dbo.contents";
             //string result_count = "SELECT COUNT(word) FROM dbo.score";
@@ -53,7 +53,7 @@ namespace Comprehensive_Project.basic_Algo
                 {
                     dic_db_Connection.Open();
                     dic_db_count = (int)dic_db_cmdCount.ExecuteScalar();
-               
+
                 }//카운트 한 값 int로 변환
             }
 
@@ -65,12 +65,12 @@ namespace Comprehensive_Project.basic_Algo
                     con_db_count = (int)con_db_cmdCount.ExecuteScalar();
                 }//카운트 한 값 int로 변환
             }
-            
-            Console.WriteLine("컨텐츠 DB의 단어 수= "+con_db_count+"개");
+
+            Console.WriteLine("컨텐츠 DB의 단어 수= " + con_db_count + "개");
             Console.WriteLine("사전 DB의 단어 수= " + dic_db_count + "개\n");
             String[,] dic_db_array = new String[dic_db_count, 4];//db카운트 값 만큼 배열 선언
-            String[,] con_db_array = new String[con_db_count,2];//db카운트 값 만큼 배열 선언
-            String[,] result_array = new string[con_db_count,4];//결과 값 넣을 배열
+            String[,] con_db_array = new String[con_db_count, 2];//db카운트 값 만큼 배열 선언
+            String[,] result_array = new string[con_db_count, 4];//결과 값 넣을 배열
             int dic_count = 0;
 
 
@@ -78,7 +78,7 @@ namespace Comprehensive_Project.basic_Algo
             {
                 using (SqlDataReader dic_reader = command.ExecuteReader())
                 {
-                   
+
                     while (dic_reader.Read())
                     {
                         dic_db_array[dic_count, 0] = dic_reader.GetString(0);
@@ -90,12 +90,12 @@ namespace Comprehensive_Project.basic_Algo
                         //Console.Write(dic_db_array[dic_count, 2] + "\t");
                         //Console.Write(dic_db_array[dic_count, 3] + "\n");
                         dic_count += 1;
-                        
-                        
+
+
                     }
                     dic_reader.Close();
                 }
-                
+
             }
             int con_count = 0;
             using (SqlCommand con_command = new SqlCommand(con_sql, con_scon))
@@ -106,7 +106,7 @@ namespace Comprehensive_Project.basic_Algo
                     while (reader.Read())
                     {
                         String reder_data_0 = (String)reader.GetString(1);
-                        con_db_array[con_count,0] = reder_data_0;
+                        con_db_array[con_count, 0] = reder_data_0;
                         String reder_data_1 = (String)reader.GetString(1);
                         con_db_array[con_count, 1] = reder_data_1;
                         con_count += 1;
@@ -122,7 +122,7 @@ namespace Comprehensive_Project.basic_Algo
                 if (con_count >= con_db_count) break;
                 for (int j = 0; j < dic_db_count; j++)
                 {
-                    string con_key = con_db_array[con_count,1];
+                    string con_key = con_db_array[con_count, 1];
                     string dic_key = dic_db_array[j, 0];
                     if (con_key == dic_key)
                     {
@@ -138,18 +138,23 @@ namespace Comprehensive_Project.basic_Algo
                 con_count++;
 
             }
-            
-            print_rating_count(con_db_count, result_array,1);
-            print_rating_count(con_db_count, result_array,2);
-            print_rating_count(con_db_count, result_array,3);
+            int[] badge_key_array = new int[3];
 
+            for (int i = 0; i < 3; i++)
+            {
+                badge_key_array[i] = print_rating_count(con_db_count, result_array, i + 1);
+                badge_result(badge_key_array[i], i);
+            }
+            Console.WriteLine("");
         }
-        
-        public static void print_rating_count(int con_db_count, String[,] result_array, int col)
+
+        public static int print_rating_count(int con_db_count, String[,] result_array, int col)
         {
             int result_count = 0;
             double score = 0;
             string[,] sum_score = new string[4, 2];
+            int badge_count = 0;
+
             sum_score[1, 0] = "성차별";
             sum_score[2, 0] = "인종차별";
             sum_score[3, 0] = "비속어";
@@ -165,7 +170,7 @@ namespace Comprehensive_Project.basic_Algo
                 {
                     case "4등급":
                         score += 0.1;
-                        Console.WriteLine(db_word + "  " +sum_score[col,0]+" "+ key + "  " + score + "점");
+                        Console.WriteLine(db_word + "  " + sum_score[col, 0] + " " + key + "  " + score + "점");
                         break;
                     case "3등급":
                         score += 0.06;
@@ -191,15 +196,26 @@ namespace Comprehensive_Project.basic_Algo
             {
                 score = 1.0;
                 Console.WriteLine("\n최고 점수 초과\n과도한 " + sum_score[col, 0] + " 관련 단어가 나온 영상입니다.\n시청에 충분한 주의가 필요합니다.");
+                badge_count++;
             }
 
             sum_score[col, 1] = score.ToString("F");
             Console.WriteLine("\n");
             //Console.WriteLine("유의미한 단어 수= " + result_len + "개");
-            Console.WriteLine("최종"+sum_score[col,0] +"등급 점수는 = " + sum_score[col,1] + "점\n");
+            Console.WriteLine("최종" + sum_score[col, 0] + "등급 점수는 = " + sum_score[col, 1] + "점\n");
 
-            
+            return badge_count;
         }
-       
+
+        public string badge_result(int badge_key, int array_key)
+        {
+            string[] array_badge = new string[3];
+            array_badge[0] = "선정성";
+            array_badge[1] = "인종차별";
+            array_badge[2] = "폭력성";
+            if (badge_key == 1)
+                Console.Write(array_badge[array_key] + " 태그.\t");
+            return array_badge[array_key];
+        }
     }
 }

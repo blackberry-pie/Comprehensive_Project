@@ -13,6 +13,7 @@ namespace Comprehensive_Project.basic_Algo
     {
         public algo()
         {
+            
             string connectionString = "server =hyunsam.asuscomm.com;Database = dictionary;User id = deokjin;Password = s2260827a";
 
             SqlConnection scon = new SqlConnection(connectionString);
@@ -137,6 +138,7 @@ namespace Comprehensive_Project.basic_Algo
                 con_count++;
 
             }
+            
             print_rating_count(con_db_count, result_array,1);
             print_rating_count(con_db_count, result_array,2);
             print_rating_count(con_db_count, result_array,3);
@@ -151,6 +153,7 @@ namespace Comprehensive_Project.basic_Algo
             sum_score[1, 0] = "성차별";
             sum_score[2, 0] = "인종차별";
             sum_score[3, 0] = "비속어";
+
 
             while (true)
             {
@@ -182,6 +185,12 @@ namespace Comprehensive_Project.basic_Algo
                 }
                 result_count++;
 
+
+            }
+            if (score >= 1.0)
+            {
+                score = 1.0;
+                Console.WriteLine("\n최고 점수 초과\n과도한 " + sum_score[col, 0] + " 관련 단어가 나온 영상입니다.\n시청에 충분한 주의가 필요합니다.");
             }
 
             sum_score[col, 1] = score.ToString("F");
@@ -189,6 +198,7 @@ namespace Comprehensive_Project.basic_Algo
             //Console.WriteLine("유의미한 단어 수= " + result_len + "개");
             Console.WriteLine("최종"+sum_score[col,0] +"등급 점수는 = " + sum_score[col,1] + "점\n");
 
+            
         }
        
     }

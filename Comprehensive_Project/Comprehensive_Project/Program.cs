@@ -31,8 +31,8 @@ namespace Comprehensive_Project
             //GCP Storage upload 모듈
             var storage = new Comprehensive_Project.Google_Cloud_Platform.GCPStorageUpload(bucketname, filePath, objectName);
             String storageUri = storage.GetFileStorageLink();
-            
 
+            Console.WriteLine("Speech-to-Text를 시작합니다.");
             ///GCP Speech-to-Text 모듈
             Comprehensive_Project.Google_Cloud_Platform.SpeechToText stt = new Comprehensive_Project.Google_Cloud_Platform.SpeechToText(storageUri);
             var sttResult = stt.GetResult();

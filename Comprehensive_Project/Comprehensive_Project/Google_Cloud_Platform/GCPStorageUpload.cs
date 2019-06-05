@@ -36,10 +36,10 @@ namespace Comprehensive_Project.Google_Cloud_Platform
                     Console.WriteLine($"Uploaded {objectName}.");
                 }
             }
-            catch (System.ArgumentException e)
+            catch (System.ArgumentException)
             {
-                Console.WriteLine("빈 경로 이름은 사용할 수 없습니다. 5초 후에 종료합니다.");
-                Thread.Sleep(3000);
+                Console.WriteLine("존재하지 않는 파일을 업로드 할 수 없습니다.\n프로그램을 5초 후에 종료합니다.");
+                Thread.Sleep(5000);
                 Environment.Exit(0);
 
             }

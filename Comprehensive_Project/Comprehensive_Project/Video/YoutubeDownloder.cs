@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Scripting.Hosting;
 using System.Diagnostics;
+using System.Threading;
 
 namespace Comprehensive_Project.Video
 {
@@ -42,6 +43,14 @@ namespace Comprehensive_Project.Video
             if (error != null)
             {
                 Console.WriteLine("error : " + error);
+                bool boolean = error.Contains("Failed to execute script youtubedownloader");
+                if (boolean)
+                {
+                    Console.WriteLine("파일 다운로드에 실패 했습니다.\n프로그램을 5초 후에 종료합니다.");
+                    Thread.Sleep(5000);
+                    Environment.Exit(0);
+                }
+
             }
             resultValue = resultFileName;
 
@@ -71,3 +80,4 @@ namespace Comprehensive_Project.Video
 
 
 
+`

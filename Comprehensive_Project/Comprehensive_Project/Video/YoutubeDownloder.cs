@@ -33,8 +33,10 @@ namespace Comprehensive_Project.Video
             proc.Start();    //프로세스 시작
             proc.StandardInput.Write(youtubeLink + Environment.NewLine);     //명령어를 입력
             proc.StandardInput.Close();
-            String error = proc.StandardError.ReadToEnd();//오류내용 읽기
 
+
+
+            String error = proc.StandardError.ReadToEnd();//오류내용 읽기
 
             String resultFileName = proc.StandardOutput.ReadToEnd();
 
@@ -48,7 +50,7 @@ namespace Comprehensive_Project.Video
                 {
                     Console.WriteLine("파일 다운로드에 실패 했습니다.\n프로그램을 5초 후에 종료합니다.");
                     Thread.Sleep(5000);
-                    Environment.Exit(0);
+                    Environment.Exit(1);
                 }
 
             }

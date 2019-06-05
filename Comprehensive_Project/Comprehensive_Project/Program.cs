@@ -14,11 +14,11 @@ namespace Comprehensive_Project
         {
             
             String youtubeLink = args[0];
-            Console.WriteLine("Link: " + youtubeLink);
+            Console.WriteLine("Link : " + youtubeLink);
             //youtube 다운로더 모듈 시작
             Comprehensive_Project.Video.YoutubeDownloder yd = new Comprehensive_Project.Video.YoutubeDownloder(youtubeLink); //args[0]로는 안됨. 직접 값을 넣을 경우 작동함
             var fileName = yd.GetResult();
-            Console.WriteLine("파일 이름:" + fileName);
+            Console.WriteLine("파일 이름  : " + fileName);
             //youtube 다운로더 모듈 종료
 
             String objectName = fileName; //구글 스토리지에 업로드되는 이름
@@ -38,7 +38,7 @@ namespace Comprehensive_Project
             var sttResult = stt.GetResult();
             //STT 모듈 종료
 
-            Console.WriteLine("stt 결과 : " + sttResult + "\n\n\n\n\n\n\n");
+            Console.WriteLine("Speech-to-Text 결과 : " + sttResult + "\n\n\n\n\n\n\n");
 
  
 

@@ -40,7 +40,7 @@ namespace Comprehensive_Project.Google_Cloud_Platform
             {
                 Console.WriteLine("존재하지 않는 파일을 업로드 할 수 없습니다.\n프로그램을 5초 후에 종료합니다.");
                 Thread.Sleep(5000);
-                Environment.Exit(0);
+                Environment.Exit(1);
 
             }
            

@@ -8,6 +8,9 @@ using System.Linq;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
+using static System.Net.Mime.MediaTypeNames;
+
 namespace Comprehensive_Project.Google_Cloud_Platform
 {
     //bucketname : speech_limit;
@@ -33,10 +36,12 @@ namespace Comprehensive_Project.Google_Cloud_Platform
                     Console.WriteLine($"Uploaded {objectName}.");
                 }
             }
-            catch (ArgumentException)
+            catch (System.ArgumentException e)
             {
-                Console.WriteLine("빈 경로 이름은 사용할 수 없습니다.");
-                throw;
+                Console.WriteLine(e.Message + "빈 경로 이름은 사용할 수 없습니다. 5초 후에 종료합니다.");
+                Thread.Sleep(3000);
+                Environment.Exit(0);
+
             }
            
             fileStorageLink = FileStorageLinkSet(bucketName, objectName);

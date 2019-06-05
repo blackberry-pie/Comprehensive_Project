@@ -38,7 +38,7 @@ namespace Comprehensive_Project.Google_Cloud_Platform
             }
             catch (System.ArgumentException e)
             {
-                Console.WriteLine(e.Message + "빈 경로 이름은 사용할 수 없습니다. 5초 후에 종료합니다.");
+                Console.WriteLine("빈 경로 이름은 사용할 수 없습니다. 5초 후에 종료합니다.");
                 Thread.Sleep(3000);
                 Environment.Exit(0);
 

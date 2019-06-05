@@ -24,12 +24,21 @@ namespace Comprehensive_Project.Google_Cloud_Platform
         private void UploadFile(string bucketName, string localPath, string objectName = null)
         {
             var storage = StorageClient.Create();
-            using (var f = File.OpenRead(localPath)) 
+            try
             {
-                objectName = objectName ?? Path.GetFileName(localPath);
-                storage.UploadObject(bucketName, objectName, null, f);
-                Console.WriteLine($"Uploaded {objectName}.");
+                using (var f = File.OpenRead(localPath))
+                {
+                    objectName = objectName ?? Path.GetFileName(localPath);
+                    storage.UploadObject(bucketName, objectName, null, f);
+                    Console.WriteLine($"Uploaded {objectName}.");
+                }
             }
+            catch (ArgumentException)
+            {
+                Console.WriteLine("빈 경로 이름은 사용할 수 없습니다.");
+                throw;
+            }
+           
             fileStorageLink = FileStorageLinkSet(bucketName, objectName);
              // 파일 링크 생성
         }

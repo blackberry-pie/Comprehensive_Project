@@ -31,6 +31,10 @@ namespace Comprehensive_Project
             Ratio.videoName = temp;
 
         }
+        static public String GetvideoName()
+        {
+            return Ratio.videoName;
+        }
 
 
 

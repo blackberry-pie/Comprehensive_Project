@@ -86,15 +86,18 @@ namespace Comprehensive_Project
             Console.Clear();
             Comprehensive_Project.basic_Algo.algo algo = new Comprehensive_Project.basic_Algo.algo();
 
+            
             Console.WriteLine("성차별 점수 : "+Ratio.sex);
             Console.WriteLine("인종차별 점수 : " + Ratio.racism);
             Console.WriteLine("비속어 점수 : " + Ratio.dirtyWord);
             Console.WriteLine("태그 : " + Ratio.tag);
+            Console.WriteLine("링크 : " + Ratio.link);
+            Console.WriteLine("비디오 이름 : " + Ratio.GetvideoName());
 
-            //처리 후 삭제 테스트
+
 
             dbas.TruncateResultTable();
-
+            dbas.InsertRatioData();
 
             fileIO.AlㅣLocalFileDelete();
 

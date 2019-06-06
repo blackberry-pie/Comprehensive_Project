@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
+
 namespace Comprehensive_Project
 {
     class Program
     {
+
+
         private static readonly string bucketname = "speech_limit";
         //private static readonly String ParserInputFileName = "input.txt";
         //https://www.youtube.com/watch?v=vpnY2CBLOiY 범죄도시 테스트용
@@ -14,6 +18,16 @@ namespace Comprehensive_Project
         {
             
             String youtubeLink = args[0];
+            if (String.IsNullOrWhiteSpace(youtubeLink))
+            {
+                Console.WriteLine("입력값이 공백이거나 없습니다. 5초후 종료합니다");
+                Thread.Sleep(5000);
+                Environment.Exit(1);
+            }
+
+
+
+            Ratio.link = youtubeLink;
             Console.WriteLine("Link : " + youtubeLink);
             //youtube 다운로더 모듈 시작
             Comprehensive_Project.Video.YoutubeDownloder yd = new Comprehensive_Project.Video.YoutubeDownloder(youtubeLink); //args[0]로는 안됨. 직접 값을 넣을 경우 작동함
@@ -25,7 +39,8 @@ namespace Comprehensive_Project
             String filePath = fileName; //업로드 대상 로컬쪽
             Console.WriteLine("filePath : " + filePath);
 
-            
+            Ratio.SetvideoName(fileName);
+
 
             //STT 모듈 시작
             //GCP Storage upload 모듈
@@ -71,11 +86,20 @@ namespace Comprehensive_Project
             Console.Clear();
             Comprehensive_Project.basic_Algo.algo algo = new Comprehensive_Project.basic_Algo.algo();
 
+            Console.WriteLine("성차별 점수 : "+Ratio.sex);
+            Console.WriteLine("인종차별 점수 : " + Ratio.racism);
+            Console.WriteLine("비속어 점수 : " + Ratio.dirtyWord);
+            Console.WriteLine("태그 : " + Ratio.tag);
+
             //처리 후 삭제 테스트
 
             dbas.TruncateResultTable();
 
+
             fileIO.AlㅣLocalFileDelete();
+
+
+
             //Console.ReadKey();
             return 0;
 

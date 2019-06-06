@@ -204,12 +204,27 @@ namespace Comprehensive_Project.basic_Algo
             //Console.WriteLine("유의미한 단어 수= " + result_len + "개");
             Console.WriteLine("최종" + sum_score[col, 0] + "등급 점수는 = " + sum_score[col, 1] + "점\n");
 
+
+            switch (sum_score[col, 0])
+            {
+                case "성차별":
+                    Ratio.sex = score;
+                    break;
+                case "인종차별":
+                    Ratio.racism = score;
+                    break;
+                case "비속어":
+                    Ratio.dirtyWord = score;
+                    break;
+                default:
+                    break;
+            }
+
+
+
             return badge_count;
         }
-        public static void GetRating()
-        {
 
-        }
 
         public string badge_result(int badge_key, int array_key)
         {
@@ -218,7 +233,10 @@ namespace Comprehensive_Project.basic_Algo
             array_badge[1] = "인종차별";
             array_badge[2] = "폭력성";
             if (badge_key == 1)
+            {
                 Console.Write(array_badge[array_key] + " 태그.\t");
+                Ratio.tag = Ratio.tag + " " + array_badge[array_key];
+            }
             return array_badge[array_key];
         }
     }

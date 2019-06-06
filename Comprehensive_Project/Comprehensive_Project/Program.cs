@@ -25,6 +25,9 @@ namespace Comprehensive_Project
                 Environment.Exit(1);
             }
 
+            Comprehensive_Project.DataBase.DataBaseAccess dbas = new Comprehensive_Project.DataBase.DataBaseAccess();
+            dbas.TruncateResultTable();
+
 
 
             Ratio.link = youtubeLink;
@@ -80,10 +83,10 @@ namespace Comprehensive_Project
             //var parserResultKLT = Comprehensive_Project.Parser.KoreanLanguageTextmining2017.getResult(); //결과물은 String배열 형태로 할것
 
 
-            Comprehensive_Project.DataBase.DataBaseAccess dbas = new Comprehensive_Project.DataBase.DataBaseAccess(parserResult);
+            
             dbas.TruncateContentsTable();
             dbas.InsertParserData(parserResult);
-            Console.Clear();
+            //Console.Clear();
             Comprehensive_Project.basic_Algo.algo algo = new Comprehensive_Project.basic_Algo.algo();
 
             
@@ -96,7 +99,7 @@ namespace Comprehensive_Project
 
 
 
-            dbas.TruncateResultTable();
+
             dbas.InsertRatioData();
 
             fileIO.AlㅣLocalFileDelete();

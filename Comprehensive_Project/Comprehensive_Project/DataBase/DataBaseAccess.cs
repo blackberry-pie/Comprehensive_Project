@@ -16,7 +16,7 @@ namespace Comprehensive_Project.DataBase
         private readonly String truncateSqlResultTable = "TRUNCATE TABLE dbo.result";
         private readonly String connectionString = "server = hyunsam.asuscomm.com; Database = dictionary; User id = tester; Password = tester";
 
-        public DataBaseAccess(String[] input)
+        public DataBaseAccess()
         {
  
         }

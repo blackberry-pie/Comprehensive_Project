@@ -12,14 +12,14 @@ namespace Comprehensive_Project.DataBase
         private readonly String insetSql = "INSERT INTO dbo.contents (number,word) VALUES (@number, @word)";
         private readonly String deleteSql = "DELETE FROM dbo.contents";
         private readonly String truncateSql = "TRUNCATE TABLE dbo.contents";
+        private readonly String truncateSqlResultTable = "TRUNCATE TABLE dbo.result";
         private readonly String connectionString = "server = hyunsam.asuscomm.com; Database = dictionary; User id = tester; Password = tester";
 
         public DataBaseAccess(String[] input)
         {
-            this.TruncateContentsTable();
-            this.InsertData(input);
+ 
         }
-        public void InsertData(String[] data)
+        public void InsertParserData(String[] data)
         {
             using (SqlConnection connect = new SqlConnection(connectionString))
             {
@@ -65,7 +65,7 @@ namespace Comprehensive_Project.DataBase
         }
         public void TruncateContentsTable()//컨텐츠 테이블 초기화
         {
-            //delete table
+            //truncate table
             using (SqlConnection connect = new SqlConnection(connectionString))
             {
                 connect.Open();
@@ -79,5 +79,21 @@ namespace Comprehensive_Project.DataBase
                 connect.Close();
             }
         }
+        public void TruncateResultTable()
+        {
+            using (SqlConnection connect = new SqlConnection(connectionString))
+            {
+                connect.Open();
+
+                using (SqlCommand command = new SqlCommand(truncateSqlResultTable, connect))
+                {
+                    command.Parameters.Clear();
+                    command.CommandType = CommandType.Text;
+                    command.ExecuteNonQuery();
+                }
+                connect.Close();
+            }
+        }
+
     }
 }

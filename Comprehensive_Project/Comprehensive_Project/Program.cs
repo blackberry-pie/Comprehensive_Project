@@ -66,11 +66,14 @@ namespace Comprehensive_Project
 
 
             Comprehensive_Project.DataBase.DataBaseAccess dbas = new Comprehensive_Project.DataBase.DataBaseAccess(parserResult);
-
+            dbas.TruncateContentsTable();
+            dbas.InsertParserData(parserResult);
             Console.Clear();
             Comprehensive_Project.basic_Algo.algo algo = new Comprehensive_Project.basic_Algo.algo();
 
             //처리 후 삭제 테스트
+
+            dbas.TruncateResultTable();
 
             fileIO.AlㅣLocalFileDelete();
             //Console.ReadKey();

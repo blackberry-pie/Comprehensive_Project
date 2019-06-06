@@ -206,6 +206,10 @@ namespace Comprehensive_Project.basic_Algo
 
             return badge_count;
         }
+        public static void GetRating()
+        {
+
+        }
 
         public string badge_result(int badge_key, int array_key)
         {

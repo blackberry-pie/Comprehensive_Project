@@ -20,8 +20,7 @@ namespace Comprehensive_Project
             String youtubeLink = args[0];
             if (String.IsNullOrWhiteSpace(youtubeLink))
             {
-                Console.WriteLine("입력값이 공백이거나 없습니다. 5초후 종료합니다");
-                Thread.Sleep(5000);
+                Console.WriteLine("input value is empty.");
                 Environment.Exit(1);
             }
 

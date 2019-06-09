@@ -48,8 +48,8 @@ namespace Comprehensive_Project.Video
                 bool boolean = error.Contains("Failed to execute script youtubedownloader");
                 if (boolean)
                 {
-                    Console.WriteLine("파일 다운로드에 실패 했습니다.\n프로그램을 5초 후에 종료합니다.");
-                    Thread.Sleep(5000);
+                    Console.WriteLine("file download failed.\n");
+
                     Environment.Exit(1);
                 }
 

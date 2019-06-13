@@ -192,6 +192,30 @@ namespace Comprehensive_Project.basic_Algo
 
 
             }
+
+            // 0.2점 단위로 등급 판정
+            if (score < 0.2)
+            {
+                sum_score[col, 1] = "0등급";
+            }
+            else if (score < 0.4)
+            {
+                sum_score[col, 1] = "1등급";
+            }
+            else if (score < 0.6)
+            {
+                sum_score[col, 1] = "2등급";
+            }
+            else if (score < 0.8)
+            {
+                sum_score[col, 1] = "3등급";
+            }
+            else
+            {
+                sum_score[col, 1] = "4등급";
+            }
+
+
             if (score >= 1.0)
             {
                 score = 1.0;
@@ -199,10 +223,10 @@ namespace Comprehensive_Project.basic_Algo
                 badge_count++;
             }
 
-            sum_score[col, 1] = score.ToString("F");
+            //sum_score[col, 1] = score.ToString("F"); //0.2점 단위로 등급 판정 변경 인해 주석처리
             Console.WriteLine("\n");
             //Console.WriteLine("유의미한 단어 수= " + result_len + "개");
-            Console.WriteLine("최종" + sum_score[col, 0] + "등급 점수는 = " + sum_score[col, 1] + "점\n");
+            Console.WriteLine("최종" + sum_score[col, 0] + "등급 점수는 = " + sum_score[col, 1] + "입니다\n");
 
 
             switch (sum_score[col, 0])

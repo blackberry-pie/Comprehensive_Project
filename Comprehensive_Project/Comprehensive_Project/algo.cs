@@ -226,19 +226,22 @@ namespace Comprehensive_Project.basic_Algo
             //sum_score[col, 1] = score.ToString("F"); //0.2점 단위로 등급 판정 변경 인해 주석처리
             Console.WriteLine("\n");
             //Console.WriteLine("유의미한 단어 수= " + result_len + "개");
-            Console.WriteLine("최종" + sum_score[col, 0] + "등급 점수는 = " + sum_score[col, 1] + "입니다\n");
+            Console.WriteLine("최종" + sum_score[col, 0] + "등급 : " + sum_score[col, 1] + "입니다\n");
 
 
             switch (sum_score[col, 0])
             {
                 case "성차별":
                     Ratio.sex = score;
+                    Ratio.sexStr = sum_score[col, 1];
                     break;
                 case "인종차별":
                     Ratio.racism = score;
+                    Ratio.racStr = sum_score[col, 1];
                     break;
                 case "비속어":
                     Ratio.dirtyWord = score;
+                    Ratio.dirtyWordStr = sum_score[col, 1];
                     break;
                 default:
                     break;

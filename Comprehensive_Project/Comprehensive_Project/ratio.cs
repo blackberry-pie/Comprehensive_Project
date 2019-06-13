@@ -9,8 +9,11 @@ namespace Comprehensive_Project
     static class Ratio
     {
         static public double sex;
+        static public String sexStr;
         static public double dirtyWord;
+        static public String dirtyWordStr;
         static public double racism;
+        static public String racStr;
         static public String tag;
         static public String link;
         static private String videoName;

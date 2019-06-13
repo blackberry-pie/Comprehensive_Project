@@ -89,7 +89,7 @@ namespace Comprehensive_Project
             Comprehensive_Project.basic_Algo.algo algo = new Comprehensive_Project.basic_Algo.algo();
 
             
-            Console.WriteLine("성차별 등급 : "+Ratio.sex);
+            Console.WriteLine("성차별 등급 : "+Ratio.sexStr);
             Console.WriteLine("인종차별 등급 : " + Ratio.racStr);
             Console.WriteLine("비속어 등급 : " + Ratio.dirtyWordStr);
             Console.WriteLine("태그 : " + Ratio.tag);

@@ -159,7 +159,9 @@ namespace Comprehensive_Project.basic_Algo
             sum_score[2, 0] = "인종차별";
             sum_score[3, 0] = "비속어";
 
-            int toxic_count = 0;
+            int worst_toxic_count = 0;
+            int toxic_count_grade_3 = 0;
+            int toxic_count_grade_2 = 0;
 
             while (true)
             {
@@ -170,14 +172,17 @@ namespace Comprehensive_Project.basic_Algo
                 switch (key)
                 {
                     case "4등급":
-                        toxic_count++;
+                        worst_toxic_count++;
+                        score += 0.1;
                         Console.WriteLine(db_word + "  " + sum_score[col, 0] + " " + key + "  " + score + "점");
                         break;
                     case "3등급":
+                        toxic_count_grade_3++;
                         score += 0.06;
                         Console.WriteLine(db_word + "  " + sum_score[col, 0] + " " + key + "  " + score + "점");
                         break;
                     case "2등급":
+                        toxic_count_grade_2++;
                         score += 0.03;
                         Console.WriteLine(db_word + "  " + sum_score[col, 0] + " " + key + "  " + score + "점");
                         break;
@@ -190,27 +195,33 @@ namespace Comprehensive_Project.basic_Algo
 
                 }
                 result_count++;
-                if(toxic_count == 3)
+                if(worst_toxic_count == 3)
                 {
                     score = 1;
+                }else if(toxic_count_grade_3 == 6)
+                {
+                    score += 0.3;
+                }else if(toxic_count_grade_2 == 15)
+                {
+                    score += 0.1;
                 }
 
             }
 
             // 0.2점 단위로 등급 판정
-            if (score < 0.2)
+            if (score == 0)
             {
                 sum_score[col, 1] = "0등급";
             }
-            else if (score < 0.4)
+            else if (score < 0.25)
             {
                 sum_score[col, 1] = "1등급";
             }
-            else if (score < 0.6)
+            else if (score < 0.49)
             {
                 sum_score[col, 1] = "2등급";
             }
-            else if (score < 0.8)
+            else if (score < 0.74)
             {
                 sum_score[col, 1] = "3등급";
             }

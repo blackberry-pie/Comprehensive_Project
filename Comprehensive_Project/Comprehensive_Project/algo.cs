@@ -209,15 +209,15 @@ namespace Comprehensive_Project.basic_Algo
             }
 
             // 0.2점 단위로 등급 판정
-            if (score == 0)
+            if (score >= 1)
             {
-                sum_score[col, 1] = "0등급";
+                sum_score[col, 1] = "4등급";
             }
             else if (score < 0.25)
             {
                 sum_score[col, 1] = "1등급";
             }
-            else if (score < 0.49)
+            else if (score < 0.50)
             {
                 sum_score[col, 1] = "2등급";
             }
@@ -227,7 +227,7 @@ namespace Comprehensive_Project.basic_Algo
             }
             else
             {
-                sum_score[col, 1] = "4등급";
+                sum_score[col, 1] = "0등급";
             }
 
 

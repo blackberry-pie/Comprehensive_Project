@@ -159,6 +159,7 @@ namespace Comprehensive_Project.basic_Algo
             sum_score[2, 0] = "인종차별";
             sum_score[3, 0] = "비속어";
 
+            int toxic_count = 0;
 
             while (true)
             {
@@ -169,7 +170,7 @@ namespace Comprehensive_Project.basic_Algo
                 switch (key)
                 {
                     case "4등급":
-                        score += 0.1;
+                        toxic_count++;
                         Console.WriteLine(db_word + "  " + sum_score[col, 0] + " " + key + "  " + score + "점");
                         break;
                     case "3등급":
@@ -189,7 +190,10 @@ namespace Comprehensive_Project.basic_Algo
 
                 }
                 result_count++;
-
+                if(toxic_count == 3)
+                {
+                    score = 1;
+                }
 
             }
 
